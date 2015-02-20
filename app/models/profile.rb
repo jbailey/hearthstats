@@ -9,11 +9,14 @@ class Profile < ActiveRecord::Base
 
   belongs_to :users
 
-  has_attached_file :avatar, :default_url => "/assets/avatar.jpg", styles:{
-    thumb: '29x29>',
-    square: '200x200#',
-    medium: '300x300>'
-  }
+  has_attached_file :avatar, 
+    :default_url => "/assets/avatar.jpg",
+    bucket: ENV['S3_BUCKET_NAME'],
+    style: {
+      thumb: '29x29>',
+      square: '200x200#',
+      medium: '300x300>'
+    }
 
   has_attached_file :sig_pic, :default_url => "/assets/sig_pic.png"
 

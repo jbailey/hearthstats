@@ -15,11 +15,13 @@ group :development do
   gem 'pry-byebug'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'guard-spring'
+  # gem 'guard-spring'
   gem 'seed_dump'
   gem 'rack-mini-profiler'
   gem 'awesome_print', :require => false
   #gem 'active_record_query_trace'
+  gem 'pg'
+  gem 'mysql2'
 end
 
 group :assets do
@@ -103,7 +105,7 @@ group :test do
   gem 'capybara', '>= 2.0.2'
   gem 'capybara-screenshot'
   gem 'factory_girl_rails'
-  gem 'guard-rspec'
+  # gem 'guard-rspec', require: false
   gem 'phashion'
 end
 

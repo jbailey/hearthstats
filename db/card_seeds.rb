@@ -1,5 +1,5 @@
 #encoding: utf-8
-Card.create!([
+cards_data = [
   {name: "Edwin VanCleef", description: "Combo: Gain +2/+2 for each card played earlier this turn.", attack: 2, health: 2, rarity_id: 5, klass_id: 6, mana: 3, collectible: true, patch_id: nil, blizz_id: "EX1_613", card_set: "Classic", type_name: "Minion"},
   {name: "Perdition's Blade", description: "Battlecry: Deal 1 damage. Combo: Deal 2 instead.", attack: 2, health: nil, rarity_id: 3, klass_id: 6, mana: 3, collectible: true, patch_id: nil, blizz_id: "EX1_133", card_set: "Classic", type_name: "Weapon"},
   {name: "Bloodsail Raider", description: "Battlecry: Gain Attack equal to the Attack of your weapon.", attack: 2, health: 3, rarity_id: 2, klass_id: nil, mana: 2, collectible: true, patch_id: nil, blizz_id: "NEW1_018", card_set: "Classic", type_name: "Minion"},
@@ -909,4 +909,13 @@ Card.create!([
   {name: "Warglaive of Azzinoth", description: "", attack: 2, health: nil, rarity_id: 2, klass_id: nil, mana: 2, collectible: nil, patch_id: nil, blizz_id: "TU4e_004", card_set: "Missions", type_name: "Weapon"},
   {name: "Emboldened!", description: "Increased Stats.", attack: nil, health: nil, rarity_id: nil, klass_id: nil, mana: nil, collectible: nil, patch_id: nil, blizz_id: "Mekka3e", card_set: "Promotion", type_name: "Enchantment"},
   {name: "Transformed", description: "Has been transformed into a chicken!", attack: nil, health: nil, rarity_id: nil, klass_id: nil, mana: nil, collectible: nil, patch_id: nil, blizz_id: "Mekka4e", card_set: "Promotion", type_name: "Enchantment"}
-])
+]
+
+cards_data.each do |data|
+  card = Card.find_by_name data[:name]
+  if card.nil?
+    Card.create!(data)
+  else
+    card.update_attributes(data)
+  end
+end

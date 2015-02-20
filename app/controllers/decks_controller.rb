@@ -20,7 +20,7 @@ class DecksController < ApplicationController
     params[:order] ||= "desc"
 
     @q = Deck.where(is_public: true).
-              group(:unique_deck_id).
+              group(:unique_deck_id).group("unique_decks.winrate").group("decks.id").
               includes(:unique_deck, user: :profile).
               ransack(params[:q])
     @q.unique_deck_num_matches_gteq = '30' unless params[:q]

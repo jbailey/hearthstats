@@ -1,7 +1,7 @@
 class Card < ActiveRecord::Base
   attr_accessible :name, :hearthhead_id, :description, :card_set,
                   :rarity_id, :type_name, :klass_id, :mana, :health, :attack,
-                  :collectible, :blizz_id, :patch_id
+                  :collectible, :blizz_id, :patch_id, :type_id, :race_id
 
   RARITY = {
     5 => "Legendary",

@@ -13,7 +13,7 @@ class WelcomeController < ApplicationController
     end
     @topdecks = Rails.cache.fetch('wel#top_deck') do
       Deck.where(is_public: true).where('decks.created_at >= ?', 1.week.ago).
-                group(:unique_deck_id).
+                group(:unique_deck_id).group("decks.id").
                 joins(:unique_deck).
                 joins(:user).
                 where("unique_decks.num_matches >= ?", 30).
